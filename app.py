@@ -16,6 +16,8 @@ def index():
     return "<h1>check</h1>"
 
 
+if __name__ == '__main__': app.run(debug=True)
+
     #'''
     #if not github.authorized:
     #    return redirect(url_for("github.login"))
