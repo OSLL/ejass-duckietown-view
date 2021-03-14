@@ -1,6 +1,8 @@
 import os
-from flask import Flask, redirect, url_for
+from flask import Flask, redirect, url_for, Response, render_template
 from flask_dance.contrib.github import make_github_blueprint, github
+
+from Camera import Camera
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("FLASK_SECRET_KEY", "supersekrit")
@@ -8,7 +10,6 @@ app.config["GITHUB_OAUTH_CLIENT_ID"] = "2d6432d7473dd5d82b4b"
 app.config["GITHUB_OAUTH_CLIENT_SECRET"] = "c5ab4101055c32325ce838504691a1577401a346"
 github_bp = make_github_blueprint()
 app.register_blueprint(github_bp, url_prefix="/github_login")
-
 
 
 @app.route("/")
@@ -21,7 +22,15 @@ def index():
     return "<h1>Ooops!</h1>"
 
 
-if __name__ == '__main__': app.run(debug=True)
+@app.route("/start")
+def start():
+    return render_template("index.html")
 
-    
-    
+
+@app.route("/watch")
+def watch():
+    c = Camera('rtsp://5.19.248.97:8554/mystream')
+    return Response(c.gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
+
+
+if __name__ == '__main__': app.run(debug=True, use_debugger=False, use_reloader=True)
