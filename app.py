@@ -1,6 +1,7 @@
 import os
 from flask import Flask, redirect, url_for, Response, render_template
 from flask_dance.contrib.github import make_github_blueprint, github
+from utils.camera_config import get_config
 
 from Camera import Camera
 
@@ -22,14 +23,16 @@ def index():
     return "<h1>Ooops!</h1>"
 
 
-@app.route("/start")
-def start():
-    return render_template("index.html")
+@app.route("/start/<int:id>")
+def start(id):
+    return render_template("index.html", id=str(id))
 
 
-@app.route("/watch")
-def watch():
-    c = Camera('rtsp://5.19.248.97:8554/mystream')
+@app.route("/watch/<int:id>")
+def watch(id):
+    config = get_config()
+    print(config)
+    c = Camera(config[id])
     return Response(c.gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 
