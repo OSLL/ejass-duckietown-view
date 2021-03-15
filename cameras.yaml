@@ -1,3 +1,6 @@
 cameras:
-  - rtsp://5.19.248.97:8554/mystream
-  - rtsp://5.19.248.97:8554/mystream
+  - rtsp://admin:@10.135.4.240/trackID=1
+  - rtsp://admin:@10.135.4.239/trackID=1
+  - rtsp://admin:@10.135.4.238/trackID=1
+  - rtsp://admin:@10.135.4.237/trackID=1
+  - rtsp://admin:@10.135.4.236/trackID=1

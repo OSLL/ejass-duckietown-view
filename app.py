@@ -1,6 +1,8 @@
 import os
 from flask import Flask, redirect, url_for, Response, render_template
 from flask_dance.contrib.github import make_github_blueprint, github
+
+from utils.camera import get_camera
 from utils.camera_config import get_config
 
 from Camera import Camera
@@ -32,7 +34,7 @@ def start(id):
 def watch(id):
     config = get_config()
     print(config)
-    c = Camera(config[id])
+    c = get_camera(config[id])
     return Response(c.gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 

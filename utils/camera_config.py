@@ -14,3 +14,4 @@ def get_config() -> List[str]:
     with open(os.getcwd() + DEFAULT_PATH) as file:
         CAMERA_CONFIG = yaml.safe_load(file)['cameras']
     return CAMERA_CONFIG
+   
