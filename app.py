@@ -2,11 +2,6 @@ import os
 from flask import Flask, redirect, url_for, Response, render_template
 from flask_dance.contrib.github import make_github_blueprint, github
 
-from utils.camera import get_camera
-from utils.camera_config import get_config
-
-from Camera import Camera
-
 app = Flask(__name__)
 app.secret_key = os.environ.get("FLASK_SECRET_KEY", "supersekrit")
 app.config["GITHUB_OAUTH_CLIENT_ID"] = "2d6432d7473dd5d82b4b"
@@ -25,17 +20,10 @@ def index():
     return "<h1>Ooops!</h1>"
 
 
-@app.route("/start/<int:id>")
-def start(id):
-    return render_template("index.html", id=str(id))
+@app.route("/video")
+def start():
+    return render_template("index.html")
 
-
-@app.route("/watch/<int:id>")
-def watch(id):
-    config = get_config()
-    print(config)
-    c = get_camera(config[id])
-    return Response(c.gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 
 if __name__ == '__main__': app.run(debug=True, use_debugger=False, use_reloader=True)
