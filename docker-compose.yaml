@@ -14,7 +14,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
     environment:
-      RTSP_URL: rtsp://5.19.248.97:8554/mystream
+      RTSP_URL: rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov
       FFSERVER_LOG_LEVEL: error
       FFMPEG_LOG_LEVEL: warning
       FFMPEG_INPUT_OPTS: -use_wallclock_as_timestamps 1
@@ -28,7 +28,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
     environment:
-      RTSP_URL: rtsp://5.19.248.97:8554/mystream
+      RTSP_URL: rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov
       FFSERVER_LOG_LEVEL: error
       FFMPEG_LOG_LEVEL: warning
       FFMPEG_INPUT_OPTS: -use_wallclock_as_timestamps 1
@@ -42,7 +42,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
     environment:
-      RTSP_URL: rtsp://5.19.248.97:8554/mystream
+      RTSP_URL: rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov
       FFSERVER_LOG_LEVEL: error
       FFMPEG_LOG_LEVEL: warning
       FFMPEG_INPUT_OPTS: -use_wallclock_as_timestamps 1
@@ -56,7 +56,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
     environment:
-      RTSP_URL: rtsp://5.19.248.97:8554/mystream
+      RTSP_URL: rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov
       FFSERVER_LOG_LEVEL: error
       FFMPEG_LOG_LEVEL: warning
       FFMPEG_INPUT_OPTS: -use_wallclock_as_timestamps 1
@@ -70,7 +70,7 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
     environment:
-      RTSP_URL: rtsp://5.19.248.97:8554/mystream
+      RTSP_URL: rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov
       FFSERVER_LOG_LEVEL: error
       FFMPEG_LOG_LEVEL: warning
       FFMPEG_INPUT_OPTS: -use_wallclock_as_timestamps 1

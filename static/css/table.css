@@ -1,3 +1,4 @@
-table {
-    width: 100%; /* Ширина таблицы в процентах */
+img {
+    max-width: 33%;
+    height: auto;
 }
