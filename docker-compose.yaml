@@ -76,6 +76,20 @@ services:
       FFMPEG_INPUT_OPTS: -use_wallclock_as_timestamps 1
       FFMPEG_OUTPUT_OPTS: -async 1 -vsync 1
     container_name: camera_4
+  camera_5:
+    image: eroji/rtsp2mjpg
+    restart: always
+    expose:
+      - "8090"
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      RTSP_URL: rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mov
+      FFSERVER_LOG_LEVEL: error
+      FFMPEG_LOG_LEVEL: warning
+      FFMPEG_INPUT_OPTS: -use_wallclock_as_timestamps 1
+      FFMPEG_OUTPUT_OPTS: -async 1 -vsync 1
+    container_name: camera_5
 
   nginx:
     image: nginx:alpine
@@ -86,6 +100,7 @@ services:
       - camera_2
       - camera_3
       - camera_4
+      - camera_5
       - web
     ports:
       - "9000:80"
