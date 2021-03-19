@@ -1,1 +1,1 @@
-docker-compose -f docker-compose.yaml build
+docker-compose -f docker-compose-3501.yaml build
