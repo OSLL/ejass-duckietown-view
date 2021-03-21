@@ -22,7 +22,10 @@ def index():
 
 @app.route("/video")
 def start():
-    return render_template("index.html")
+    text = ""
+    with open("/info/text.md") as file:
+        text = file.read()
+    return render_template("index.html", text=text)
 
 
 

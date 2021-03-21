@@ -6,6 +6,8 @@ services:
     expose:
       - "5000"
     container_name: ejass
+    volumes:
+      -  ./info:/info:ro
   camera_0:
     image: eroji/rtsp2mjpg
     restart: always
