@@ -9,7 +9,21 @@
     <link href="{{ url_for('static', filename='css/table.css') }}" rel="stylesheet">
 </head>
 
+<script>
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
 
+function newStream(e, btn) {
+    var src = btn.href;
+    var splitHref = src.split("/");
+    var length = splitHref.length;
+    var el = document.querySelector("img[src=\"/"+ splitHref[length - 2] + "/" + splitHref[length -1] + "\"]");
+    el.src = "";
+    window.open(src+"?dummy="+getRandomInt(1000));
+    e.preventDefault();
+}
+</script>
 
 <body>
 
@@ -19,8 +33,7 @@
 
 <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.js')}}"></script>
 <script type="text/javascript">
-let id = window.location.href.split('/')[4];
-console.log(id);
+
 
 
 </script>
