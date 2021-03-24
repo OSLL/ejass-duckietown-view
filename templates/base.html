@@ -23,6 +23,10 @@ function newStream(e, btn) {
     window.open(src+"?dummy="+getRandomInt(1000));
     e.preventDefault();
 }
+window.onbeforeunload = function(event){
+  document.querySelector("img[src=\"/camera_1/live.mjpg\"").src="";
+
+};
 </script>
 
 <body>
