@@ -33,7 +33,7 @@ def start():
     
     if resp.ok:
         login = resp.json()["login"]
-        with open("./auth_user.yaml") as file:
+        with open("/info/auth_user.yaml") as file:
             users = yaml.load(file, Loader=yaml.Loader)
             print(users)
             if login not in users["users"]:
