@@ -1,7 +1,7 @@
 import os
 from flask import Flask, redirect, url_for, Response, render_template
 from flask_dance.contrib.github import make_github_blueprint, github
-
+import yaml
 # FOR DEV
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
@@ -28,10 +28,21 @@ def index():
 def start():
     if not github.authorized:
         return redirect(url_for("github.login"))
-    text = ""
-    with open("/info/text.md") as file:
-        text = file.read()
-    return render_template("index.html", text=text)
+
+    resp = github.get("/user")
+    
+    if resp.ok:
+        login = resp.json()["login"]
+        with open("./auth_user.yaml") as file:
+            users = yaml.load(file, Loader=yaml.Loader)
+            print(users)
+            if login not in users["users"]:
+                return "<h1>No access!</h1>"
+        text = ""
+        with open("/info/text.md") as file:
+            text = file.read()
+        return render_template("index.html", text=text)
+    return "<h1>Ooops!</h1>"    
 
 
 
