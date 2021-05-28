@@ -2,6 +2,10 @@ import os
 from flask import Flask, redirect, url_for, Response, render_template
 from flask_dance.contrib.github import make_github_blueprint, github
 
+# FOR DEV
+os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
+
+
 app = Flask(__name__)
 app.secret_key = os.environ.get("FLASK_SECRET_KEY", "supersekrit")
 app.config["GITHUB_OAUTH_CLIENT_ID"] = "2d6432d7473dd5d82b4b"
@@ -22,6 +26,8 @@ def index():
 
 @app.route("/video")
 def start():
+    if not github.authorized:
+        return redirect(url_for("github.login"))
     text = ""
     with open("/info/text.md") as file:
         text = file.read()
