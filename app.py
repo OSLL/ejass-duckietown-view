@@ -2,7 +2,7 @@ import os
 from flask import Flask, redirect, url_for, Response, render_template
 from flask_dance.contrib.github import make_github_blueprint, github
 import yaml
-# FOR DEV
+# FOR DEV - for http
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
 
