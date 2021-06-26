@@ -95,16 +95,17 @@ services:
   nginx:
     image: nginx:alpine
     restart: always
-    links:
-      - camera_1
-      - camera_2
-      - camera_3
-      - camera_4
-      - camera_5
-      - camera_6
-      - web
-    ports:
-      - "9000:80"
+    network_mode: "host"
+    #links:
+    #  - camera_1
+    #  - camera_2
+    #  - camera_3
+    #  - camera_4
+    #  - camera_5
+    #  - camera_6
+    #  - web
+    #ports:
+    #  - "9000:80"
     volumes:
       - ./rtsp2mjpg/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
     container_name: nginx_ejass
