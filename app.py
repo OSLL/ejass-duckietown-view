@@ -41,6 +41,9 @@ def start():
         text = ""
         with open("/info/text.md") as file:
             text = file.read()
+        with open("/info/temp.md") as file:
+            temp = file.read()
+            text += temp
         return render_template("index.html", text=text)
     return "<h1>Ooops!</h1>"    
 
